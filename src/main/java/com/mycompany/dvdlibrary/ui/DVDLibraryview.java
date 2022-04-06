@@ -60,7 +60,7 @@ public class DVDLibraryview {
         }
         io.readString("Please hit enter to continue.");
     }
-    
+
     public String getDVDTitle() {
         return io.readString("Please enter the DVD title:");
     }
@@ -73,7 +73,7 @@ public class DVDLibraryview {
         }
         io.readString("Please hit enter to continue");
     }
-    
+
     public void displayDisplayDVDBanner() {
         io.print("=== Display DVD ===");
     }
@@ -97,4 +97,17 @@ public class DVDLibraryview {
         }
         io.readString("Please hit enter to continue.");
     }
+    
+    public void displayRemoveDVDBanner () {
+    io.print("=== Remove DVD ===");
+}
+
+public void displayRemoveResult(DVD dvdRecord) {
+    if(dvdRecord != null){
+      io.print("DVD successfully removed.");
+    }else{
+      io.print("No such dvd.");
+    }
+    io.readString("Please hit enter to continue.");
+}
 }
