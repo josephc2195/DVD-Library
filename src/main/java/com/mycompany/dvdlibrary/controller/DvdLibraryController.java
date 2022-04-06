@@ -34,22 +34,30 @@ public class DvdLibraryController {
             menuSelection = getMenuSelection();
 
             switch (menuSelection) {
-                case 1 ->
+                case 1:
                     addDvd();
-                case 2 ->
+                    break;
+                case 2:
                     removeDvd();
-                case 3 ->
+                    break;
+                case 3:
                     editDvd();
-                case 4 ->
+                    break;
+                case 4:
                     listDvd();
-                case 5 ->
+                    break;
+                case 5:
                     displayDvd();
-                case 6 ->
+                    break;
+                case 6:
                     searchDvd();
-                case 7 ->
+                    break;
+                case 7:
                     cont = false;
-                default ->
+                    break;
+                default:
                     view.displayUnknownCommandBanner();
+                    break;
             }
         }
         view.displayExitBanner();
@@ -77,18 +85,24 @@ public class DvdLibraryController {
         int choice = view.displayEditMenu();
         String editDVD = view.editDVD();
         switch (choice) {
-            case 1 ->
+            case 1:
                 dvd.setTitle(editDVD);
-            case 2 ->
+                break;
+            case 2:
                 dvd.setRelease(editDVD);
-            case 3 ->
+                break;
+            case 3:
                 dvd.setRating(editDVD);
-            case 4 ->
+                break;
+            case 4:
                 dvd.setDirector(editDVD);
-            case 5 ->
+                break;
+            case 5:
                 dvd.setStudio(editDVD);
-            case 6 ->
+                break;
+            case 6:
                 dvd.setNote(editDVD);
+                break;
         }
         dao.updateDVD(dvdTitle, dvd);
     }
