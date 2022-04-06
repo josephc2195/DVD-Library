@@ -7,11 +7,11 @@ import java.util.List;
  *
  * @author mihrettadesse
  */
-public class DVDLibraryView {
+public class DVDLibraryview {
 
     private UserIO io;
 
-    public DVDLibraryView(UserIO _io) {
+    public DVDLibraryview(UserIO _io) {
         this.io = _io;
     }
 
