@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 
 /**
- *
+ * A text file implementation of the DAO 
  * @author Henry Perrottet
  * Property of LunchBreak Software 
  */
@@ -21,6 +21,12 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
     private static final String DELIMITER = "::";
     private static final String DATA_FILE = "LIBRARY.txt";
     
+    /**
+     * Add a DVD object to storage. If there is already a DVD under that title it is overwritten
+     * @param _dvd the DVD object to add
+     * @return if there was already a DVD under that title, return overwritten DVD, otherwise null
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public DVD addDVD(DVD _dvd) throws DvdLibraryDaoException{
         loadData();
@@ -29,6 +35,12 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
         return previous;
     }
 
+    /**
+     * Remove a DVD object from storage, specified by title parameter
+     * @param _targetTitle title of DVD to remove
+     * @return the removed DVD, which is null if not found
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public DVD removeDVD(String _targetTitle) throws DvdLibraryDaoException{
         loadData();
@@ -37,6 +49,13 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
         return existing;
     }
 
+    /**
+     * Update a DVD object by overwriting it with a given updated DVD object
+     * @param _targetTitle the title of the DVD to update
+     * @param _newDVD the updated DVD object to overwrite the old one with
+     * @return the new object if title was found, otherwise null if not found
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public DVD updateDVD(String _targetTitle, DVD _newDVD) throws DvdLibraryDaoException{
         loadData();
@@ -51,18 +70,35 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
         }
     }
 
+    /**
+     * Get all DVDs as a List
+     * @return List of DVDs 
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public List<DVD> getAllDVD() throws DvdLibraryDaoException{
         loadData();
         return new ArrayList<>( library.values() );
     }
 
+    /**
+     * Get a specific DVD by title
+     * @param _title title of DVD to get
+     * @return DVD object which is null if not found
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public DVD getDVD(String _title) throws DvdLibraryDaoException{
         loadData();
         return library.get(_title);
     }
 
+    /**
+     * Search DVDs by a search term 
+     * @param _searchTerm Search term
+     * @return List of all DVDs whose title contained that term
+     * @throws DvdLibraryDaoException 
+     */
     @Override
     public List<DVD> searchDVDByTitle(String _searchTerm) throws DvdLibraryDaoException{
         loadData();
@@ -76,7 +112,10 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
         return results;
     }
     
-    
+    /**
+     * Load data from file by reading and unmarshalling each line of the file
+     * @throws DvdLibraryDaoException 
+     */
     public void loadData() throws DvdLibraryDaoException{
         Scanner in;
         try{
@@ -109,6 +148,10 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
         return dvdObject;
     }
     
+    /**
+     * Store data to file by marshalling each DVD object to text and writing to file 
+     * @throws DvdLibraryDaoException 
+     */
     public void storeData() throws DvdLibraryDaoException{
         PrintWriter out;
         

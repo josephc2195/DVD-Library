@@ -1,7 +1,7 @@
 package com.mycompany.dvdlibrary.dto;
 
 /**
- *
+ * DTO (DVD Object)
  * @author Henry Perrottet
  * Property of LunchBreak Software
  */
