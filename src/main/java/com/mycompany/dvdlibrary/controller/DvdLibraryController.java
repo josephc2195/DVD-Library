@@ -6,25 +6,29 @@ package com.mycompany.dvdlibrary.controller;
 
 import com.mycompany.dvdlibrary.dao.DvdLibraryDao;
 import com.mycompany.dvdlibrary.dao.DvdLibraryDaoException;
-import com.mycompany.dvdlibrary.dao.DvdLibraryDaoFileImpl;
+import com.mycompany.dvdlibrary.dto.DVD;
+import com.mycompany.dvdlibrary.ui.DVDLibraryview;
 import com.mycompany.dvdlibrary.ui.UserIO;
 import com.mycompany.dvdlibrary.ui.UserIOConsoleImpl;
+import java.util.List;
 
 /**
  *
  * @author Chica
- * Property of Lunch Break Software
+ * Property of LunchBreak Software
  */
 public class DvdLibraryController {
     
     private final UserIO io = new UserIOConsoleImpl();
     private final DvdLibraryDao dao;
+    private final DVDLibraryview view;
     
-    public DvdLibraryController(DvdLibraryDao dao) {
+    public DvdLibraryController(DvdLibraryDao dao, DVDLibraryview view) {
         this.dao = dao;
+        this.view = view;
     }
     
-    public void run() {
+    public void run() throws DvdLibraryDaoException {
         boolean cont = true;
         int menuSelection = 0;
         while(cont) {
@@ -61,11 +65,12 @@ public class DvdLibraryController {
     }
     
     private int getMenuSelection() {
-        return 0;
+        return view.printMenuAndGetSelection();
     }
     
-    private void addDvd() {
-        
+    private void addDvd() throws DvdLibraryDaoException {
+        DVD newDvd = view.getNewDVDInfo();
+        dao.addDVD(newDvd);
     }
     
     private void removeDvd() {
@@ -76,12 +81,13 @@ public class DvdLibraryController {
         
     }
     
-    private void listDvd() {
-        
+    private void listDvd() throws DvdLibraryDaoException {
+        List<DVD> dvdList = dao.getAllDVD();
+        view.displayDVDList(dvdList);
     }
     
     private void displayDvd() {
-        
+       
     }
 
     private void searchDvd() {
