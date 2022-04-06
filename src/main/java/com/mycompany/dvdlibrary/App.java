@@ -17,10 +17,10 @@ import com.mycompany.dvdlibrary.ui.UserIOConsoleImpl;
 public class App {
 
     public static void main(String[] args) throws DvdLibraryDaoException {
-        UserIO io = new UserIOConsoleImpl();
-        DvdLibraryDao myDao = new DvdLibraryDaoFileImpl();
-        DVDLibraryview myView = new DVDLibraryview(io);
-        DvdLibraryController myController = new DvdLibraryController(myDao, myView);
-        myController.run();
+        UserIO io = new UserIOConsoleImpl();//object for printing and getting input from user
+        DvdLibraryDao myDao = new DvdLibraryDaoFileImpl();//Model in MVC
+        DVDLibraryview myView = new DVDLibraryview(io);//View in MVC
+        DvdLibraryController myController = new DvdLibraryController(myDao, myView);//Controller in MVC
+        myController.run();//starts the controller
     }
 }
