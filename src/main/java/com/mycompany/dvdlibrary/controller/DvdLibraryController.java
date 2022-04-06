@@ -32,26 +32,28 @@ public class DvdLibraryController {
             
             switch(menuSelection) {
                 case 1:
-                    io.print("Add DVD");
+                    addDvd();
                     break;
                 case 2:
-                    io.print("Remove DVD");
+                    removeDvd();
                     break;
                 case 3: 
-                    io.print("Edit DVD");
+                    editDvd();
                     break;
                 case 4:
-                    io.print("List DVD's");
+                    listDvd();
                     break;
                 case 5: 
-                    io.print("Display DVD information");
+                    displayDvd();
                     break;
                 case 6: 
-                    io.print("Search");
+                    searchDvd();
                     break;
                 case 7:
-                    io.print("Exit");
+                    cont = false;
                     break;
+                default:
+                    io.print("Unknown command");
                    
             }
         }
@@ -62,7 +64,27 @@ public class DvdLibraryController {
         return 0;
     }
     
-    private void createDvd() {
+    private void addDvd() {
+        
+    }
+    
+    private void removeDvd() {
+        
+    }
+    
+    private void editDvd() {
+        
+    }
+    
+    private void listDvd() {
+        
+    }
+    
+    private void displayDvd() {
+        
+    }
+
+    private void searchDvd() {
         
     }
 }
