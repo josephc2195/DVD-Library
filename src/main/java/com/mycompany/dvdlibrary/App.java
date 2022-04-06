@@ -12,7 +12,7 @@ import com.mycompany.dvdlibrary.ui.UserIOConsoleImpl;
 /**
  *
  * @author chica
- * Property of LunchBreak Software
+// * Property of LunchBreak Software
  */
 public class App {
 

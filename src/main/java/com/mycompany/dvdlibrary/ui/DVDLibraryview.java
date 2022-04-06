@@ -17,7 +17,7 @@ public class DVDLibraryview {
 
     public int printMenuAndGetSelection() {
         io.print("Main Menu");
-        io.print("1.Add DVD");
+        io.print("1. Add DVD");
         io.print("2. Remove DVD");
         io.print("3. Edit DVD Info");
         io.print("4. List DVDs");
@@ -134,6 +134,13 @@ public class DVDLibraryview {
 
     public String getSearchTerm() {
         return io.readString("Please enter the search term");
-
+    }
+    
+    public void displaySearchResults(List<DVD> dvds) {
+        for(DVD d : dvds) {
+            io.print(d.getTitle());
+        }
+        io.readString("Please hit enter to continue");
+        
     }
 }

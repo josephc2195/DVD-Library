@@ -14,95 +14,100 @@ import java.util.List;
 
 /**
  *
- * @author Chica
- * Property of LunchBreak Software
+ * @author Chica Property of LunchBreak Software
  */
 public class DvdLibraryController {
-    
+
     private final UserIO io = new UserIOConsoleImpl();
     private final DvdLibraryDao dao;
     private final DVDLibraryview view;
-    
+
     public DvdLibraryController(DvdLibraryDao dao, DVDLibraryview view) {
         this.dao = dao;
         this.view = view;
     }
-    
+
     public void run() throws DvdLibraryDaoException {
         boolean cont = true;
         int menuSelection = 0;
-        while(cont) {
+        while (cont) {
             menuSelection = getMenuSelection();
-            
-            switch(menuSelection) {
-                case 1:
+
+            switch (menuSelection) {
+                case 1 ->
                     addDvd();
-                    break;
-                case 2:
+                case 2 ->
                     removeDvd();
-                    break;
-                case 3: 
+                case 3 ->
                     editDvd();
-                    break;
-                case 4:
+                case 4 ->
                     listDvd();
-                    break;
-                case 5: 
+                case 5 ->
                     displayDvd();
-                    break;
-                case 6: 
+                case 6 ->
                     searchDvd();
-                    break;
-                case 7:
+                case 7 ->
                     cont = false;
-                    break;
-                default:
-                    io.print("Unknown command");
+                default ->
+                    view.displayUnknownCommandBanner();
             }
         }
-        io.print("GOOD BYE");
+        view.displayExitBanner();
     }
-    
+
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
     }
-    
+
     private void addDvd() throws DvdLibraryDaoException {
         DVD newDvd = view.getNewDVDInfo();
         dao.addDVD(newDvd);
     }
-    
+
     private void removeDvd() throws DvdLibraryDaoException {
+        view.displayRemoveDVDBanner();
         String dvdTitle = view.getDVDTitle();
-        dao.removeDVD(dvdTitle);
+        DVD removedDVD = dao.removeDVD(dvdTitle);
+        view.displayRemoveResult(removedDVD);
     }
-    
+
     private void editDvd() throws DvdLibraryDaoException {
         String dvdTitle = view.getDVDTitle();
         DVD dvd = dao.getDVD(dvdTitle);
         int choice = view.displayEditMenu();
         String editDVD = view.editDVD();
-        switch(choice) {
-            case 1 -> dvd.setTitle(editDVD);
-            case 2 -> dvd.setRelease(editDVD);
-            case 3 -> dvd.setRating(editDVD);
-            case 4 -> dvd.setDirector(editDVD);
-            case 5 -> dvd.setStudio(editDVD);
-            case 6 -> dvd.setNote(editDVD);
+        switch (choice) {
+            case 1 ->
+                dvd.setTitle(editDVD);
+            case 2 ->
+                dvd.setRelease(editDVD);
+            case 3 ->
+                dvd.setRating(editDVD);
+            case 4 ->
+                dvd.setDirector(editDVD);
+            case 5 ->
+                dvd.setStudio(editDVD);
+            case 6 ->
+                dvd.setNote(editDVD);
         }
         dao.updateDVD(dvdTitle, dvd);
     }
-    
+
     private void listDvd() throws DvdLibraryDaoException {
         List<DVD> dvdList = dao.getAllDVD();
         view.displayDVDList(dvdList);
     }
-    
-    private void displayDvd() {
-       
+
+    private void displayDvd() throws DvdLibraryDaoException {
+        view.displayDisplayDVDBanner();
+        String dvdTitle = view.getDVDTitle();
+        DVD dvd = dao.getDVD(dvdTitle);
+        view.displayDVD(dvd);
     }
 
-    private void searchDvd() {
-        
+    private void searchDvd() throws DvdLibraryDaoException {
+        String searchTerm = view.getSearchTerm();
+        List<DVD> titles = dao.searchDVDByTitle(searchTerm);
+        view.displaySearchResults(titles);
     }
 }
