@@ -110,4 +110,12 @@ public void displayRemoveResult(DVD dvdRecord) {
     }
     io.readString("Please hit enter to continue.");
 }
+
+public void displayExitBanner() {
+    io.print("Good Bye!!!");
+}
+
+public void displayUnknownCommandBanner() {
+    io.print("Unknown Command!!!");
+}
 }
