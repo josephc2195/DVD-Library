@@ -48,15 +48,12 @@ public class DVDLibraryview {
 
     public void displayDVDList(List<DVD> dvdList) {
         for (DVD currentDVD : dvdList) {
-            String dvdInfo = String.format("#%s : %s %s",
-                    currentDVD.getTitle(),
-                    currentDVD.getRelease(),
-                    currentDVD.getRating(),
-                    currentDVD.getDirector(),
-                    currentDVD.getStudio(),
-                    currentDVD.getNote());
-
-            io.print(dvdInfo);
+            io.print("Title: " + currentDVD.getTitle());
+            io.print("Release: " + currentDVD.getRelease());
+            io.print("Rating: " + currentDVD.getRating());       
+            io.print("Director: " + currentDVD.getDirector());   
+            io.print("Studio: " + currentDVD.getStudio());
+            io.print("User Note: " + currentDVD.getNote());
         }
         io.readString("Please hit enter to continue.");
     }
