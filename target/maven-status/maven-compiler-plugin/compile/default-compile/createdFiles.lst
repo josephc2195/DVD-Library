@@ -1,8 +1,0 @@
-com/mycompany/dvdlibrary/dao/DvdLibraryDaoFileImpl.class
-com/mycompany/dvdlibrary/dao/DvdLibraryDao.class
-com/mycompany/dvdlibrary/ui/UserIO.class
-com/mycompany/dvdlibrary/ui/UserIOConsoleImpl.class
-com/mycompany/dvdlibrary/controller/DvdLibraryController.class
-com/mycompany/dvdlibrary/dto/DVD.class
-com/mycompany/dvdlibrary/dao/DvdLibraryDaoException.class
-com/mycompany/dvdlibrary/App.class
