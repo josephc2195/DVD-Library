@@ -10,8 +10,8 @@ import java.util.List;
 public class DVDLibraryView {
 
     private UserIO io;
-    
-    public DVDLibraryView(UserIO _io){
+
+    public DVDLibraryView(UserIO _io) {
         this.io = _io;
     }
 
@@ -27,38 +27,50 @@ public class DVDLibraryView {
 
         return io.readInt("Please select from the above choices.", 1, 7);
     }
-    
-    public DVD getNewDVDInfo() { 
-    
-    String title= io.readString("Please enter The DVD Title");
-    String releaseDate = io.readString("Please enter The release Date");
-    String rating = io.readString("Please enter The Rating");
-    String directorName = io.readString("Please enter The Director Name");
-    String studio= io.readString("Please enter The Studio");
-    String note= io.readString("Please enter The Note");
-    DVD dvd = new DVD();
-    dvd.setTitle(title);
-    dvd.setRelease(releaseDate);
-    dvd.setRating(rating);
-    dvd.setDirector(directorName);
-    dvd.setStudio(studio);
-    dvd.setNote(note);
-    return dvd;
-}
-    
-    public void displayDVDList(List<DVD> dvdList) {
-    for (DVD currentDVD : dvdList) {
-        String dvdInfo = String.format("#%s : %s %s",
-              currentDVD.getTitle(),
-              currentDVD.getRelease(),
-              currentDVD.getRating(),
-              currentDVD.getDirector(),
-              currentDVD.getStudio(),
-              currentDVD.getNote());
-        
-        
-        io.print(dvdInfo);
+
+    public DVD getNewDVDInfo() {
+
+        String title = io.readString("Please enter The DVD Title");
+        String releaseDate = io.readString("Please enter The release Date");
+        String rating = io.readString("Please enter The Rating");
+        String directorName = io.readString("Please enter The Director Name");
+        String studio = io.readString("Please enter The Studio");
+        String note = io.readString("Please enter The Note");
+        DVD dvd = new DVD();
+        dvd.setTitle(title);
+        dvd.setRelease(releaseDate);
+        dvd.setRating(rating);
+        dvd.setDirector(directorName);
+        dvd.setStudio(studio);
+        dvd.setNote(note);
+        return dvd;
     }
-    io.readString("Please hit enter to continue.");
-}
+
+    public void displayDVDList(List<DVD> dvdList) {
+        for (DVD currentDVD : dvdList) {
+            String dvdInfo = String.format("#%s : %s %s",
+                    currentDVD.getTitle(),
+                    currentDVD.getRelease(),
+                    currentDVD.getRating(),
+                    currentDVD.getDirector(),
+                    currentDVD.getStudio(),
+                    currentDVD.getNote());
+
+            io.print(dvdInfo);
+        }
+        io.readString("Please hit enter to continue.");
+    }
+    
+    public String getDVDTitle() {
+        return io.readString("Please enter the DVD title:");
+    }
+
+    public void removeDVD(DVD dvd) {
+        if (dvd != null) {
+            io.print("DVD removed");
+        } else {
+            io.print("No such DVD found");
+        }
+        io.readString("Please hit enter to continue");
+    }
 }

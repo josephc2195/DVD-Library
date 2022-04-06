@@ -73,7 +73,9 @@ public class DvdLibraryController {
         dao.addDVD(newDvd);
     }
     
-    private void removeDvd() {
+    private void removeDvd() throws DvdLibraryDaoException {
+        String dvdTitle = view.getDVDTitle();
+        DVD removedDvd = dao.removeDVD(dvdTitle);
         
     }
     
