@@ -131,4 +131,9 @@ public class DVDLibraryview {
 
         return io.readInt("Please select from these choices above", 1, 6);
     }
+
+    public String getSearchTerm() {
+        return io.readString("Please enter the search term");
+
+    }
 }
