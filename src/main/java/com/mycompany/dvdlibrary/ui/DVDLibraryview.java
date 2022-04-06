@@ -73,4 +73,28 @@ public class DVDLibraryview {
         }
         io.readString("Please hit enter to continue");
     }
+    
+    public void displayDisplayDVDBanner() {
+        io.print("=== Display DVD ===");
+    }
+
+    public String getDVDTitleChoice() {
+        return io.readString("Please enter the DVD TITLE.");
+    }
+
+    public void displayDVD(DVD dvd) {
+        if (dvd != null) {
+            io.print(dvd.getTitle());
+            io.print(dvd.getRelease());
+            io.print(dvd.getRating());
+            io.print(dvd.getDirector());
+            io.print(dvd.getStudio());
+            io.print(dvd.getNote());
+
+            io.print("");
+        } else {
+            io.print("No such dvd.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
 }
