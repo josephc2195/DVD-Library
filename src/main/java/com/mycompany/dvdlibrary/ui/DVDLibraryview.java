@@ -84,11 +84,9 @@ public class DVDLibraryview {
             io.print("Studio: " + dvd.getStudio());
             io.print("User Note: " + dvd.getNote());
 
-            io.print("");
         } else {
             io.print("No such dvd.");
         }
-        io.readString("Please hit enter to continue.");
     }
 
     public void displayRemoveDVDBanner() {
