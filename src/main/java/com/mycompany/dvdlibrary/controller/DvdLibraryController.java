@@ -58,7 +58,6 @@ public class DvdLibraryController {
                     break;
                 default:
                     io.print("Unknown command");
-                   
             }
         }
         io.print("GOOD BYE");
@@ -75,12 +74,23 @@ public class DvdLibraryController {
     
     private void removeDvd() throws DvdLibraryDaoException {
         String dvdTitle = view.getDVDTitle();
-        DVD removedDvd = dao.removeDVD(dvdTitle);
-        
+        dao.removeDVD(dvdTitle);
     }
     
-    private void editDvd() {
-        
+    private void editDvd() throws DvdLibraryDaoException {
+        String dvdTitle = view.getDVDTitle();
+        DVD dvd = dao.getDVD(dvdTitle);
+        int choice = view.displayEditMenu();
+        String editDVD = view.editDVD();
+        switch(choice) {
+            case 1 -> dvd.setTitle(editDVD);
+            case 2 -> dvd.setRelease(editDVD);
+            case 3 -> dvd.setRating(editDVD);
+            case 4 -> dvd.setDirector(editDVD);
+            case 5 -> dvd.setStudio(editDVD);
+            case 6 -> dvd.setNote(editDVD);
+        }
+        dao.updateDVD(dvdTitle, dvd);
     }
     
     private void listDvd() throws DvdLibraryDaoException {

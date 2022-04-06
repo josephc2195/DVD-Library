@@ -50,8 +50,8 @@ public class DVDLibraryview {
         for (DVD currentDVD : dvdList) {
             io.print("Title: " + currentDVD.getTitle());
             io.print("Release: " + currentDVD.getRelease());
-            io.print("Rating: " + currentDVD.getRating());       
-            io.print("Director: " + currentDVD.getDirector());   
+            io.print("Rating: " + currentDVD.getRating());
+            io.print("Director: " + currentDVD.getDirector());
             io.print("Studio: " + currentDVD.getStudio());
             io.print("User Note: " + currentDVD.getNote());
         }
@@ -94,25 +94,41 @@ public class DVDLibraryview {
         }
         io.readString("Please hit enter to continue.");
     }
-    
-    public void displayRemoveDVDBanner () {
-    io.print("=== Remove DVD ===");
-}
 
-public void displayRemoveResult(DVD dvdRecord) {
-    if(dvdRecord != null){
-      io.print("DVD successfully removed.");
-    }else{
-      io.print("No such dvd.");
+    public void displayRemoveDVDBanner() {
+        io.print("=== Remove DVD ===");
     }
-    io.readString("Please hit enter to continue.");
-}
 
-public void displayExitBanner() {
-    io.print("Good Bye!!!");
-}
+    public void displayRemoveResult(DVD dvdRecord) {
+        if (dvdRecord != null) {
+            io.print("DVD successfully removed.");
+        } else {
+            io.print("No such dvd.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
 
-public void displayUnknownCommandBanner() {
-    io.print("Unknown Command!!!");
-}
+    public void displayExitBanner() {
+        io.print("Good Bye!!!");
+    }
+
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown Command!!!");
+    }
+
+    public String editDVD() {
+        return io.readString("Please enter the new value: ");
+    }
+
+    public int displayEditMenu() {
+        io.print("Please select one of the following: ");
+        io.print("1. Title");
+        io.print("2. Release year");
+        io.print("3. Rating");
+        io.print("4. Director");
+        io.print("5. Studio");
+        io.print("6. Note");
+
+        return io.readInt("Please select from these choices above", 1, 6);
+    }
 }
