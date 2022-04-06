@@ -1,6 +1,7 @@
 package com.mycompany.dvdlibrary.ui;
 
 import com.mycompany.dvdlibrary.dto.DVD;
+import java.util.List;
 
 /**
  *
@@ -39,5 +40,21 @@ public class DVDLibraryview {
     dvd.setStudio(studio);
     dvd.setNote(note);
     return dvd;
+}
+    
+    public void displayDVDList(List<DVD> dvdList) {
+    for (DVD currentDVD : dvdList) {
+        String dvdInfo = String.format("#%s : %s %s",
+              currentDVD.getTitle(),
+              currentDVD.getRelease(),
+              currentDVD.getRating(),
+              currentDVD.getDirector(),
+              currentDVD.getStudio(),
+              currentDVD.getNote());
+        
+        
+        io.print(dvdInfo);
+    }
+    io.readString("Please hit enter to continue.");
 }
 }
