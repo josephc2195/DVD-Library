@@ -1,6 +1,9 @@
 
 package com.mycompany.dvdlibrary;
 
+import com.mycompany.dvdlibrary.ui.UserIO;
+import com.mycompany.dvdlibrary.ui.UserIOConsoleImpl;
+
 /**
  *
  * @author chica
@@ -8,6 +11,7 @@ package com.mycompany.dvdlibrary;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        UserIO io = new UserIOConsoleImpl();
+        
     }
 }
