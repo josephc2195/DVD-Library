@@ -55,6 +55,7 @@ public class DvdLibraryController {
                    
             }
         }
+        io.print("GOOD BYE");
     }
     
     private int getMenuSelection() {
