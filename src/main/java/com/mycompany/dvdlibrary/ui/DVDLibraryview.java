@@ -48,12 +48,8 @@ public class DVDLibraryview {
 
     public void displayDVDList(List<DVD> dvdList) {
         for (DVD currentDVD : dvdList) {
-            io.print("Title: " + currentDVD.getTitle());
-            io.print("Release: " + currentDVD.getRelease());
-            io.print("Rating: " + currentDVD.getRating());
-            io.print("Director: " + currentDVD.getDirector());
-            io.print("Studio: " + currentDVD.getStudio());
-            io.print("User Note: " + currentDVD.getNote());
+            displayDVD(currentDVD);
+            io.print("\n");
         }
         io.readString("Please hit enter to continue.");
     }
