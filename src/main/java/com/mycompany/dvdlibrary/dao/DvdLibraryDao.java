@@ -11,7 +11,7 @@ import java.util.List;
 public interface DvdLibraryDao {
     DVD addDVD(DVD _dvd);
     
-    DVD removeDVD(String targetTitle);
+    DVD removeDVD(String _targetTitle);
     
     DVD updateDVD(String _targetTitle, DVD _newDVD);
     

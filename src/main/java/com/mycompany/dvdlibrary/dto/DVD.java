@@ -3,6 +3,7 @@ package com.mycompany.dvdlibrary.dto;
 /**
  *
  * @author Henry Perrottet
+ * Property of LunchBreak Software
  */
 public class DVD {
     private String title, releaseDate, rating, directorName, studio, note;
