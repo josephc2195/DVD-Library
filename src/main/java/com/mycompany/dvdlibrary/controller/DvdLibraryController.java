@@ -122,6 +122,6 @@ public class DvdLibraryController {
     private void searchDvd() throws DvdLibraryDaoException {
         String searchTerm = view.getSearchTerm();
         List<DVD> titles = dao.searchDVDByTitle(searchTerm);
-        view.displaySearchResults(titles);
+        view.displayDVDList(titles);
     }
 }
