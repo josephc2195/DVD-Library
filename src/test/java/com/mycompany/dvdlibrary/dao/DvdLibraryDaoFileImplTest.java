@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,7 @@ import org.junit.jupiter.api.Test;
  */
 public class DvdLibraryDaoFileImplTest {
 
-    DvdLibraryDao testDao = new DvdLibraryDaoFileImpl();
+    DvdLibraryDao testDao;
 
     public DvdLibraryDaoFileImplTest() {
     }
@@ -38,6 +39,7 @@ public class DvdLibraryDaoFileImplTest {
         String fileName = "BunchOfDVDs.txt";
         new FileWriter(fileName);
         testDao = new DvdLibraryDaoFileImpl(fileName);
+        System.out.println("in set up method");
     }
 
     @AfterEach
@@ -65,7 +67,7 @@ public class DvdLibraryDaoFileImplTest {
         assertEquals(retrievedDVD.getStudio(), currentDVD.getStudio(), "checking studio...");
         assertEquals(retrievedDVD.getNote(), currentDVD.getNote(), "checking note...");        
         
-        assertEquals(5, testDao.getAllDVD().size(), "Size should be 5");
+        assertEquals(1, testDao.getAllDVD().size(), "Size should be 1");
     }
 
     @Test
@@ -96,7 +98,7 @@ public class DvdLibraryDaoFileImplTest {
         DVD removed = testDao.removeDVD(secondTitle);
         assertEquals(removed.getTitle(), secondDVD.getTitle(), "Sonic should be removed");
         
-        assertEquals(5, testDao.getAllDVD().size(), "Size should be 5");
+        assertEquals(1, testDao.getAllDVD().size(), "Size should be 1");
         
     }
 
@@ -124,8 +126,25 @@ public class DvdLibraryDaoFileImplTest {
         DVD updatedDVD = testDao.updateDVD(title, dvdTwo);
         
         assertEquals(updatedDVD, dvdTwo, "The new updated DVD");
+    }
+    
+    @Test
+    public void testSearch() throws DvdLibraryDaoException {
+        DVD currentDVD = new DVD();
+        String title = "Lost City";
+        currentDVD.setTitle(title);
+        currentDVD.setRelease("2022");
+        currentDVD.setRating("PG-13");
+        currentDVD.setDirector("Josh Weeden");
+        currentDVD.setStudio("Marvel");
+        currentDVD.setNote("not a good movie");
         
-        assertEquals(5, testDao.getAllDVD().size(), "Size should be 5");
+        testDao.addDVD(currentDVD);
         
+        List<DVD> searched = testDao.searchDVDByTitle(" ");
+        
+        for(DVD d : searched) {
+            assertTrue(d.getTitle().contains(" "));
+        }        
     }
 }
