@@ -19,7 +19,15 @@ import java.io.FileWriter;
 public class DvdLibraryDaoFileImpl implements DvdLibraryDao {
     Map<String, DVD> library = new HashMap<>();
     private static final String DELIMITER = "::";
-    private static final String DATA_FILE = "LIBRARY.txt";
+    private static String DATA_FILE;
+    
+    public DvdLibraryDaoFileImpl() {
+        DATA_FILE = "LIBRARY.txt";
+    }
+    
+    public DvdLibraryDaoFileImpl(String fileName) {
+        DATA_FILE = fileName;
+    }
     
     /**
      * Add a DVD object to storage. If there is already a DVD under that title it is overwritten
